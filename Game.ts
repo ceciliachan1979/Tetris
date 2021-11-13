@@ -1,6 +1,7 @@
 class Game {
 
-    board: number[][];
+    dummy: ISprite;
+    board: ISprite[][];
     bricks: number[][][];
     state: GameState;
     random: IRandom;
@@ -25,10 +26,11 @@ class Game {
         this._brickWidth = -1;
         this.brickCol = -1;
         this.brickDirection = -1;
+        this.dummy = new NullSprite();
         for (let row = 0; row < this.boardHeight(); row++) {
             this.board[row] = [];
             for (let col = 0; col < this.boardWidth(); col++) {
-                this.board[row][col] = 0;
+                this.board[row][col] = this.dummy;
             }
         }
         this.bricks = [
@@ -54,6 +56,7 @@ class Game {
                 this.brickRow--;
                 this.placeBrick();
                 this.state = GameState.Initial;
+                this.brickSprites = [];
             }
         }
     }
@@ -91,7 +94,7 @@ class Game {
         for (let row = 0; row < this.brickHeight(); row++) {
             for (let col = 0; col < this.brickWidth(); col++) {
                 let brickEntry = this.brickEntry(row, col);
-                if (this.board[this.brickRow + row][this.brickCol + col] != 0 && brickEntry != 0) {
+                if (this.board[this.brickRow + row][this.brickCol + col].color() != 0 && brickEntry != 0) {
                     return false;
                 }
             }
@@ -107,9 +110,12 @@ class Game {
                 let x = this.brickCol + col;
                 let y = this.brickRow + row;
                 if (brickEntry != 0) {
-                    this.brickSprites[brickSpriteIndex++].moveTo(x * 10 + 20 + 5, y * 10 + 5);
+                    this.brickSprites[brickSpriteIndex].moveTo(x * 10 + 20 + 5, y * 10 + 5);
+                    this.board[y][x] = this.brickSprites[brickSpriteIndex];
+                    brickSpriteIndex++;
+                } else {
+                    this.board[y][x] = this.dummy;
                 }
-                this.board[y][x] = brickEntry;
             }
         }
         return true;
@@ -118,7 +124,7 @@ class Game {
     private unplaceBrick() {
         for (let row = 0; row < this.brickHeight(); row++) {
             for (let col = 0; col < this.brickWidth(); col++) {
-                this.board[this.brickRow + row][this.brickCol + col] = 0;
+                this.board[this.brickRow + row][this.brickCol + col] = this.dummy;
             }
         }
     }
@@ -170,7 +176,7 @@ class Game {
         let result: string = "\n";
         for (let row = 0; row < this.boardHeight(); row++) {
             for (let col = 0; col < this.boardWidth(); col++) {
-                result = result + this.board[row][col].toString();
+                result = result + this.board[row][col].color().toString();
             }
             result = result + "\n";
         }

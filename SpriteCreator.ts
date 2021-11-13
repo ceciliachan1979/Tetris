@@ -29,6 +29,6 @@ f f f f f f f f f f
 f f f f f f f f f f 
 f f f f f f f f f f 
 `)
-        return new MySprite(theSprite);
+        return new MySprite(color, theSprite);
     }
 }

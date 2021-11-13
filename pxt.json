@@ -5,9 +5,20 @@
         "device": "*"
     },
     "files": [
+        "Button.ts",
+        "NullSprite.ts",
+        "Game.ts",
+        "GameState.ts",
+        "IRandom.ts",
+        "ISprite.ts",
+        "IGameService.ts",
         "main.ts",
+        "MySprite.ts",
+        "Random.ts",
+        "test.ts",
         "README.md",
-        "assets.json"
+        "assets.json",
+        "GameService.ts"
     ],
     "testFiles": [
         "test.ts"

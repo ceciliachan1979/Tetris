@@ -1,0 +1,4 @@
+interface IRandom
+{
+    random(): number;
+}

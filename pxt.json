@@ -5,7 +5,16 @@
         "device": "*"
     },
     "files": [
+        "Game.ts",
+        "GameState.ts",
+        "IRandom.ts",
+        "ISprite.ts",
+        "ISpriteCreator.ts",
         "main.ts",
+        "MySprite.ts",
+        "Random.ts",
+        "SpriteCreator.ts",
+        "test.ts",        
         "README.md",
         "assets.json"
     ],

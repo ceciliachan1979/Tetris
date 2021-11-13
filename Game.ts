@@ -48,8 +48,13 @@ class Game {
         } else if (this.state == GameState.Falling) {
             this.unplaceBrick();
             this.brickRow++;
-            this.placeBrick();
-            this.state = GameState.Halt;
+            if (this.isBrickValid()) {
+                this.placeBrick();
+            } else {
+                this.brickRow--;
+                this.placeBrick();
+                this.state = GameState.Initial;
+            }
         }
     }
 
@@ -70,7 +75,19 @@ class Game {
         }
     }
 
-    private placeBrick(): boolean {
+    private isBrickValid(): boolean {
+        if (this.brickRow < 0) {
+            return false;
+        }
+        if (this.brickRow + this.brickHeight() > this.boardHeight()) {
+            return false;
+        }
+        if (this.brickCol < 0) {
+            return false;
+        }
+        if (this.brickCol + this.brickWidth() > this.boardWidth()) {
+            return false;
+        }
         for (let row = 0; row < this.brickHeight(); row++) {
             for (let col = 0; col < this.brickWidth(); col++) {
                 let brickEntry = this.brickEntry(row, col);
@@ -79,6 +96,10 @@ class Game {
                 }
             }
         }
+        return true;
+    }
+
+    private placeBrick() {
         let brickSpriteIndex = 0;
         for (let row = 0; row < this.brickHeight(); row++) {
             for (let col = 0; col < this.brickWidth(); col++) {

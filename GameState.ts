@@ -1,4 +1,4 @@
-export enum GameState {
+enum GameState {
     Initial,
     Falling, 
     Halt

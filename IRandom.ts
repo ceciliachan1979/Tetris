@@ -1,4 +1,4 @@
-export interface IRandom
+interface IRandom
 {
     random(): number;
 }

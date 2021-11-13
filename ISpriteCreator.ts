@@ -1,5 +1,3 @@
-import { ISprite } from './ISprite'
-
-export interface ISpriteCreator {
+interface ISpriteCreator {
     createSprite(color: number): ISprite;
 }

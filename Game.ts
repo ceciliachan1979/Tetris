@@ -1,9 +1,4 @@
-import { ISpriteCreator } from 'ISpriteCreator';
-import { ISprite } from 'ISprite';
-import { GameState } from './GameState'
-import { IRandom } from './IRandom'
-
-export class Game {
+class Game {
 
     board: number[][];
     bricks: number[][][];

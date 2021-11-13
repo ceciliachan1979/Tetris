@@ -5,7 +5,6 @@
         "device": "*"
     },
     "files": [
-	"NullSprite.ts",
         "Game.ts",
         "GameState.ts",
         "IRandom.ts",

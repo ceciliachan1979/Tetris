@@ -39,7 +39,7 @@ class Game {
         this._brickDirection = -1;
         this._dummy = new NullSprite();
         this._spritePool = [];
-        for (let color = 0; color < 4; color++) {
+        for (let color = 0; color < 8; color++) {
             this._spritePool[color] = [];
         }
         for (let row = 0; row < this.boardHeight(); row++) {
@@ -50,15 +50,31 @@ class Game {
         }
         this._bricks = [
             [
-                [2, 2, 2, 2],
+                [1, 1, 1, 1],
             ],
             [
-                [1, 1, 1],
-                [0, 1, 0]
+                [2, 0, 0],
+                [2, 2, 2]
             ],
             [
-                [3, 3, 0],
-                [0, 3, 3]
+                [0, 0, 3],
+                [3, 3, 3]
+            ],
+            [
+                [4, 4],
+                [4, 4]
+            ],
+            [
+                [0, 5, 5],
+                [5, 5, 0]
+            ],
+            [
+                [0, 6, 0],
+                [6, 6, 6]
+            ],
+            [
+                [7, 7, 0],
+                [0, 7, 7]
             ]
         ];
     }

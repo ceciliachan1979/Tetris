@@ -127,6 +127,9 @@ class Game {
                         this._brickDirection = (this._brickDirection + 1) % 4;
                     }
                 }
+            }
+            else if (button == Button.Down) {
+                this._downCounter = 0;
             } else {
                 this._aPressed = false;
                 this._bPressed = false;
